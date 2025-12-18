@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - ISMAEL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* -------------------------- */
+        /* 1. CONFIGURATION & DESIGN  */
+        /* -------------------------- */
+        :root {
+            --clr-noir: #0a0a0a;
+            --clr-blanc: #f0f0f0;
+            --clr-gris-clair: #1c1c1c;
+            --clr-gris-fonce: #b0b0b0;
+            --clr-accent: #00ffff;
+            --font-primaire: 'Montserrat', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-primaire);
+            line-height: 1.6;
+            color: var(--clr-blanc);
+            background-color: var(--clr-noir);
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .nav-item, .logo { text-transform: uppercase; }
+        a { text-decoration: none; color: var(--clr-blanc); transition: 0.3s; }
+
+        /* -------------------------- */
+        /* 2. NAVIGATION              */
+        /* -------------------------- */
+        .header {
+            background-color: rgba(10, 10, 10, 0.95);
+            padding: 15px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+
+        .nav { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .nav-list { display: flex; gap: 30px; }
+
+        .nav-item {
+            position: relative;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            padding: 5px 0;
+        }
+
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            width: 0; height: 2px; bottom: 0; left: 0;
+            background-color: var(--clr-accent);
+            box-shadow: 0 0 8px var(--clr-accent);
+            transition: width 0.3s ease-in-out;
+        }
+
+        .nav-item:hover::after { width: 100%; }
+
+        /* -------------------------- */
+        /* 3. HERO SECTION            */
+        /* -------------------------- */
+        .hero {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+                        url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1920'); 
+            background-size: cover;
+            background-position: center;
+            border-bottom: 2px solid var(--clr-accent);
+        }
+
+        .interests-box {
+            margin: 15px 0;
+            padding: 12px 25px;
+            border: 1px solid var(--clr-accent);
+            border-radius: 50px;
+            background: rgba(0, 255, 255, 0.05);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.15);
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .interests-title {
+            font-weight: 700;
+            color: var(--clr-blanc);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            border-right: 1px solid rgba(0, 255, 255, 0.3);
+            padding-right: 10px;
+        }
+
+        .interests-items {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--clr-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-bio { max-width: 800px; margin-top: 10px; }
+        .hero-bio p { font-size: 1.1rem; line-height: 1.8; }
+
+        .profile-pic {
+            width: 150px; height: 150px;
+            border-radius: 50%;
+            border: 3px solid var(--clr-accent);
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+            object-fit: cover;
+        }
+
+        /* -------------------------- */
+        /* SECTION PARCOURS & STAGES  */
+        /* -------------------------- */
+        .timeline {
+            max-width: 900px;
+            margin: 40px auto;
+            position: relative;
+            padding-left: 50px;
+            text-align: left;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: #333;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            background: #111;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #333;
+            transition: 0.3s;
+        }
+
+        .timeline-item:hover {
+            border-color: var(--clr-accent);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -39px;
+            top: 25px;
+            width: 16px;
+            height: 16px;
+            background: var(--clr-noir);
+            border: 3px solid var(--clr-accent);
+            border-radius: 50%;
+            z-index: 2;
+            box-shadow: 0 0 10px var(--clr-accent);
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: var(--clr-gris-fonce);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .timeline-title {
+            color: var(--clr-accent);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .timeline-location {
+            font-size: 0.9rem;
+            color: var(--clr-blanc);
+            opacity: 0.8;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .timeline-content {
+            font-size: 0.95rem;
+            color: var(--clr-blanc);
+            text-transform: none;
+        }
+
+        /* -------------------------- */
+        /* 4. GRILLES ET CARTES       */
+        /* -------------------------- */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 20px;
+            max-width: 1200px; 
+            margin: 40px auto;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        .card {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--clr-accent);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 255, 255, 0.15);
+        }
+
+        .card img { width: 50px; height: 50px; margin-bottom: 15px; object-fit: contain; }
+        .card h2 { font-size: 0.95rem; margin-bottom: 10px; color: var(--clr-accent); }
+        .card p { font-size: 0.80rem; color: var(--clr-gris-fonce); margin-bottom: 15px; text-transform: none; }
+
+        progress {
+            width: 100%; height: 6px; appearance: none; border-radius: 10px;
+        }
+        progress::-webkit-progress-bar { background-color: #222; border-radius: 10px; }
+        progress::-webkit-progress-value { 
+            background-color: var(--clr-accent); 
+            box-shadow: 0 0 10px var(--clr-accent);
+            border-radius: 10px;
+        }
+
+        /* -------------------------- */
+        /* 5. SECTIONS GÉNÉRALES      */
+        /* -------------------------- */
+        .section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; text-align: center; }
+        .section:nth-child(even) { background-color: var(--clr-gris-clair); max-width: 100%; }
+
+        .pdf-viewer-container {
+            width: 100%; max-width: 1000px; height: 800px;
+            margin: 30px auto; border: 2px solid #333; background: #111; display: block;
+        }
+
+        .pdf-viewer-container embed { display: block; width: 100%; height: 100%; }
+
+        h2.section-title { font-size: 2.2rem; margin-bottom: 15px; display: inline-block; position: relative; }
+        h2.section-title::after {
+            content: ''; display: block; width: 60%; height: 3px; 
+            background: var(--clr-accent); margin: 10px auto;
+            box-shadow: 0 0 8px var(--clr-accent);
+        }
+
+        .footer { padding: 60px 20px; text-align: center; background: var(--clr-noir); border-top: 1px solid #333; }
+
+        @media (max-width: 1024px) {
+            .card-container { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .card-container, .projects-grid { grid-template-columns: 1fr; }
+            .pdf-viewer-container { height: 500px; }
+            .timeline { padding-left: 30px; }
+            .timeline::before { left: 0; }
+            .timeline-item::before { left: -39px; }
+            .interests-box { flex-direction: column; border-radius: 20px; gap: 5px; }
+            .interests-title { border-right: none; border-bottom: 1px solid rgba(0, 255, 255, 0.3); padding-right: 0; padding-bottom: 5px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="logo" style="font-weight: 700; letter-spacing: 2px;">ISMAEL</a>
+            <ul class="nav-list">
+                <li><a href="#cv" class="nav-item">CV</a></li>
+                <li><a href="#synthese" class="nav-item">Synthèse</a></li>
+                <li><a href="#veille" class="nav-item">Veille</a></li>
+                <li><a href="#parcours" class="nav-item">Parcours</a></li>
+                <li><a href="#realisations" class="nav-item">Compétences</a></li>
+                <li><a href="#projets" class="nav-item">Projets</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <img src="profil.jpg" alt="ISMAEL" class="profile-pic">
+        <h1>Ismael DOAMENYO</h1>
+        
+        <div class="interests-box">
+            <span class="interests-title">Centres d'intérêt :</span>
+            <span class="interests-items">Sports • Design • Jeu-Vidéo • Entrepreunariat</span>
+        </div>
+
+        <div class="hero-bio">
+            <p>Né le 16 avril 2004, je suis élève en BTS SIO option réseau (SISR) au sein du lycée Le Rebours. Dans le cadre de la validation de mon diplôme, je présente ce portfolio ainsi que les projets réalisés au cours des deux dernières années.</p>
+        </div>
+    </section>
+
+    <section id="cv" class="section">
+        <h2 class="section-title">Curriculum Vitae</h2>
+        <div class="pdf-viewer-container">
+            <embed src="cv.pdf" type="application/pdf">
+        </div>
+    </section>
+
+    <section id="synthese" class="section">
+        <h2 class="section-title">Tableau de Synthèse</h2>
+        <div class="pdf-viewer-container">
+            <embed src="synthese.pdf" type="application/pdf">
+        </div>
+    </section>
+
+    <section id="veille" class="section">
+        <h2 class="section-title">Veille Technologique</h2>
+        <div class="pdf-viewer-container">
+            <embed src="IsmaelVEILLE.pdf" type="application/pdf">
+        </div>
+    </section>
+
+    <section id="parcours" class="section">
+        <h2 class="section-title">Mon Parcours</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="timeline-date">Depuis septembre 2024</span>
+                <h3 class="timeline-title">BTS SIO (Services Informatiques aux Organisations)</h3>
+                <span class="timeline-location">Lycée Le Rebours, Paris, France</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-date">De septembre 2023 à août 2024</span>
+                <h3 class="timeline-title">Licence Économie 1ère année</h3>
+                <span class="timeline-location">Panthéon Sorbonne, Paris, France</span>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-date">Juillet 2022</span>
+                <h3 class="timeline-title">Baccalauréat général</h3>
+                <span class="timeline-location">Lycée Darius Milhaud Charles Gide, Le Kremlin-Bicêtre, France</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="stages" class="section">
+        <h2 class="section-title">Stages</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="timeline-date">Mai — fin juin 2024</span>
+                <h3 class="timeline-title">Stage - Création de boutique E-commerce</h3>
+                <span class="timeline-location">Shopify Boutique en ligne</span>
+                <p class="timeline-content">Conception et personnalisation complète d'un site de vente en ligne sous Shopify. Optimisation du parcours client, configuration des services de paiement et gestion du catalogue produit.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="realisations" class="section">
+        <h2 class="section-title">Compétences</h2>
+        <div class="card-container">
+            <div class="card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux">
+                <h2>Administration systèmes & services</h2>
+                <p>Linux (Debian, Ubuntu) Windows Server (2012) Active Directory GPO Gestion des utilisateurs (support utilisateur)</p>
+                <progress max="100" value="85"></progress>
+            </div>
+            <div class="card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/powershell/powershell-original.svg" alt="Services">
+                <h2>Services réseau</h2>
+                <p>DHCP, DNS PKI PowerShell</p>
+                <progress max="100" value="80"></progress>
+            </div>
+            <div class="card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Cisco_logo.svg" alt="Cisco">
+                <h2>Réseaux & Infrastructures</h2>
+                <p>Routage statique Routage dynamique Switch Proxy Cisco Packet Tracer</p>
+                <progress max="100" value="75"></progress>
+            </div>
+            <div class="card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Cloud">
+                <h2>Virtualisation & Cloud</h2>
+                <p>Virtualisation (VMware) Proxmox Conteneurisation (Docker)</p>
+                <progress max="100" value="70"></progress>
+            </div>
+            <div class="card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Scripting">
+                <h2>Automatisation & Scripting</h2>
+                <p>PowerShell Python Automatisation (Cron, scripts)</p>
+                <progress max="100" value="85"></progress>
+            </div>
+            <div class="card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="Web">
+                <h2>Développement Web</h2>
+                <p>HTML CSS JavaScript Serveurs Web (Apache2, Nginx)</p>
+                <progress max="100" value="80"></progress>
+            </div>
+            <div class="card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL">
+                <h2>Bases de données</h2>
+                <p>SQL SGBD : MySQL, MariaDB</p>
+                <progress max="100" value="75"></progress>
+            </div>
+            <div class="card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++">
+                <h2>Programmation</h2>
+                <p>Python C++</p>
+                <progress max="100" value="70"></progress>
+            </div>
+        </div>
+    </section>
+
+    <section id="projets" class="section">
+        <h2 class="section-title">Projets Spéciaux</h2>
+        <div class="projects-grid">
+            <div class="card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg" alt="Nginx">
+                <h2>💾 Serveur Web</h2>
+                <p>Load balancer avec Nginx & Apache2.</p>
+                <progress max="100" value="90"></progress>
+            </div>
+            <div class="card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/shopify/shopify-original.svg" alt="Shopify">
+                <h2>E-Commerce</h2>
+                <p>Conception d'une boutique Shopify optimisée.</p>
+                <progress max="100" value="95"></progress>
+            </div>
+            <div class="card">
+                <img src="https://www.svgrepo.com/show/295383/firewall.svg" alt="Firewall" style="filter: invert(100%) sepia(100%) saturate(1000%) hue-rotate(130deg);">
+                <h2>🛡️ Sécurité Réseau</h2>
+                <p>Mise en place d'un Pare-feu avec routage filtrant.</p>
+                <progress max="100" value="85"></progress>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-info">
+            <p>Ismael DOAMENYO - PORTFOLIO SITE</p>
+            <p>©️ 2025 Tous droits réservés</p>
+            <p>Contact : <a href="mailto:idoamenyo@gmail.com" style="color:var(--clr-accent)">idoamenyo@gmail.com</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>
